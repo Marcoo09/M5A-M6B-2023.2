@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using starwars.Exceptions.BusinessLogicExceptions;
 using starwars.WebApi.Filters;
 using System.ComponentModel;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace starwars.WebApi.Controllers;
 
@@ -21,7 +22,10 @@ public class CharactersController : ControllerBase
     }
 
     [HttpGet]
-    [Description("Get a list of all tasks.")]
+    [Description("Get a list of all characters.")]
+    [SwaggerOperation(Summary = "Get several values")]
+    [SwaggerResponse(200, "Everything Ok")]
+    [SwaggerResponse(400, "Bad Request")]
     public IActionResult GetCharacters()
     {
         return Ok(_characterService.GetCharacters().Select(c => new CharacterDTO(c)).ToList());

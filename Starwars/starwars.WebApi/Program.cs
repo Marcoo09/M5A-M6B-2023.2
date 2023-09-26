@@ -5,6 +5,8 @@ using starwars.ServicesFactory;
 using starwars.WebApi.Filters;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Annotations;
+using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,7 @@ servicesFactory.RegistrateServices(builder.Services);
 // Inside ConfigureServices method
 builder.Services.AddSwaggerGen(c =>
 {
+    c.EnableAnnotations();
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Your API",
