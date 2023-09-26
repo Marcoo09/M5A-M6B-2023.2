@@ -8,7 +8,6 @@ namespace starwars.WebApi.Controllers
 {
     [Route("api/sessions")]
     [ApiController]
-    [ExceptionFilter]
     public class SessionController : ControllerBase
     {
         private readonly ISessionService _sessionService;

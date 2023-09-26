@@ -43,7 +43,7 @@ namespace starwars.WebApi.Filters
                 Console.WriteLine($"Message: {e.Message} - StackTrace: {e.StackTrace}");
 
                 context.Result = new ObjectResult(new
-                        { Message = "We encountered some issues, try again later" })
+                        { Message = e.Message })
                         { StatusCode = 500 };
             }
         }

@@ -5,11 +5,12 @@ using starwars.WebApi.Dtos;
 using System.Collections.Generic;
 using starwars.Exceptions.BusinessLogicExceptions;
 using starwars.WebApi.Filters;
+using System.ComponentModel;
 
 namespace starwars.WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/characters")]
 public class CharactersController : ControllerBase
 {
     private ICharacterService _characterService;
@@ -20,6 +21,7 @@ public class CharactersController : ControllerBase
     }
 
     [HttpGet]
+    [Description("Get a list of all tasks.")]
     public IActionResult GetCharacters()
     {
         return Ok(_characterService.GetCharacters().Select(c => new CharacterDTO(c)).ToList());
